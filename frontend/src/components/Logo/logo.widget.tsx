@@ -14,10 +14,7 @@ export function Logo({ ...rest }: LogoProps) {
       w="64"
       {...rest}
     >
-      Facef
-      <Text as="span" ml="1" color="blue.500">
-        jobs
-      </Text>
+      lOGO
     </Text>
   );
 }
