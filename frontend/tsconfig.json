@@ -23,7 +23,8 @@
       "@/dtos/*": ["src/dtos/*"],
       "@/useCases/*": ["src/useCases/*"],
       "@/utils/*": ["src/utils/*"],
-      "@/contexts/*": ["src/contexts/*"]
+      "@/contexts/*": ["src/contexts/*"],
+      "@/layout/*": ["src/layout/*"]
     }
   },
   "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx"],

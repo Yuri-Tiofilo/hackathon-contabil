@@ -18,11 +18,10 @@ type SignInFormData = {
 };
 
 const signInFormSchema = yup.object().shape({
-  email: yup.string().required("E-mail obrigatório").email("E-mail inválido"),
-  password: yup.string().required("Senha é obrigatório"),
+  cnpj: yup.string().required("CNPJ é obrigatório"),
 });
 
-export default function Home() {
+export default function FirstAccess() {
   const {
     register,
     formState: { errors, isSubmitting },
@@ -59,40 +58,12 @@ export default function Home() {
             error={errors.email && errors.email?.message}
             {...register("email")}
           />
-          <InputForm
-            label="Senha"
-            nameForInput="password"
-            placeholder="Senha"
-            type="password"
-            error={errors.password && errors.email?.message}
-            {...register("password")}
-          />
         </Stack>
 
         <ButtonWidget w="100%" type="submit" isLoading={isSubmitting}>
-          Entrar
-        </ButtonWidget>
-        <ButtonWidget w="100%" colorScheme="none" border="1px" borderColor="blue.500"  type="submit" isLoading={isSubmitting}>
-          Primeiro Acesso
+          Confirmar
         </ButtonWidget>
       </Flex>
     </Flex>
   );
 }
-
-export const getServerSideProps: GetServerSideProps = async (ctx) => {
-  const cookies = parseCookies(ctx);
-
-  if (cookies["hackathon.token"]) {
-    return {
-      redirect: {
-        destination: "/dashboard",
-        permanent: false,
-      },
-    };
-  }
-
-  return {
-    props: {},
-  };
-};

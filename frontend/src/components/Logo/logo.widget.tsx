@@ -14,7 +14,7 @@ export function Logo({ ...rest }: LogoProps) {
       w="64"
       {...rest}
     >
-      lOGO
+      Hackathon
     </Text>
   );
 }
