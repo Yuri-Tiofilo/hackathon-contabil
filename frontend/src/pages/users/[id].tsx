@@ -7,6 +7,9 @@ import {
   Flex,
   Heading,
   Input,
+  Stat,
+  StatArrow,
+  StatHelpText,
   Table,
   TableContainer,
   Tbody,
@@ -16,18 +19,16 @@ import {
   Thead,
   Tr,
 } from "@chakra-ui/react";
-import { apiKey } from "@/services/getToken";
+// import { apiKey } from "@/services/getToken";
 import { useEffect, useState } from "react";
-import Calendar from "react-calendar";
+// import Calendar from "react-calendar";
 import apiTransaction from "../../mock/api.json";
 import { mdata } from "@/utils/maskInput";
 import { TransactionDTO } from "@/dtos/transactions";
-import {
-  RiArrowDownFill,
-  RiArrowLeftDownFill,
-  RiArrowLeftFill,
-} from "react-icons/ri";
+import { RiArrowLeftFill } from "react-icons/ri";
 import { useRouter } from "next/router";
+import { format } from "date-fns";
+import { Pagination } from "@/components/Pagination";
 
 export default function UserDetails() {
   const { back } = useRouter();
@@ -104,41 +105,75 @@ export default function UserDetails() {
               w={["100%", "320px"]}
               ml="2"
             />
+            <Flex justifyContent="flex-end" ml="2">
+              <Button colorScheme="green">Gerar fluxo de caixa</Button>
+            </Flex>
           </Flex>
           <Box>
             <TableContainer mt="2">
               <Table colorScheme="whiteAlpha">
                 <Thead>
                   <Tr>
-                    <Th>ID</Th>
-                    <Th>Date</Th>
-                    <Th>Amount</Th>
-                    <Th>Status</Th>
+                    <Th>Descricão e Data</Th>
+                    <Th>Tipo</Th>
+                    <Th>Valor</Th>
+                    <Th>Saldo</Th>
                   </Tr>
                 </Thead>
                 <Tbody>
                   {transactions.map((element) => (
                     <Tr key={element.id} _hover={{ cursor: "pointer" }}>
                       <Td>
-                        <Text>KLKLKL</Text>
+                        <Box>
+                          <Text color="gray.500">
+                            {format(new Date(element.date), "dd/MM/yyyy")}
+                          </Text>
+                          <Text
+                            style={{
+                              width: "270px",
+                              display: "inline-block",
+                              whiteSpace: "pre",
+                              overflow: "hidden",
+                            }}
+                            w="14"
+                            textOverflow="ellipsis"
+                          >
+                            {element.description}
+                          </Text>
+                        </Box>
                       </Td>
                       <Td>
-                        <Text>KLKLKL</Text>
+                        <Text>
+                          {element.type === "DEBIT" ? "Saída" : "Entrada"}
+                        </Text>
                       </Td>
                       <Td>
-                        <Text>KLKLKL</Text>
+                        <Text
+                          color={element.type === "DEBIT" ? "red" : "green"}
+                        >
+                          <Stat>
+                            <StatArrow
+                              type={
+                                element.type !== "DEBIT"
+                                  ? "increase"
+                                  : "decrease"
+                              }
+                            />
+                            {formattedPrice({ number: element.amount })}
+                          </Stat>
+                        </Text>
                       </Td>
                       <Td>
-                        <Text>KLKLKL</Text>
+                        <Text>
+                          {formattedPrice({ number: element.balance })}
+                        </Text>
                       </Td>
                     </Tr>
                   ))}
                 </Tbody>
               </Table>
             </TableContainer>
-            <Flex justifyContent="flex-end" mt="4">
-              <Button colorScheme="green">Gerar fluxo de caixa</Button>
-            </Flex>
+            <Pagination />
           </Box>
 
           {/* <Calendar onChange={setDate} value={date} />
