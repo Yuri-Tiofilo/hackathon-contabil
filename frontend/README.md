@@ -1,34 +1,39 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# Hackathon Contábil
 
-## Getting Started
+Este projeto representa a aplicação WEB do desafio do hackathon contábil. Nele contem a dashboard onde a Associação e o escritório de contabilidade irá realizar o controle de suas contas e seus clientes, irá gerar a consolidação bancária e exportar as consolidações já criadas.
 
-First, run the development server:
+## Instalação
+
+Primeiro execute o comando para instalação dos pacotes:
 
 ```bash
-npm run dev
-# or
+yarn
+```
+
+Em seguida execute a aplicação executando o seguinte comando:
+
+```bash
 yarn dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Abra o navegador com o endereço [http://localhost:3000](http://localhost:3000) para visualizar o resultado.
 
-You can start editing the page by modifying `pages/index.tsx`. The page auto-updates as you edit the file.
+## Features
 
-[API routes](https://nextjs.org/docs/api-routes/introduction) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.ts`.
+- [ ] Deve ter opção para a Associação cadastrar, consultar e remover os escritórios de contabilidade com CNPJ e razão social, após autenticação com um usuário e senha de administrador
+- [ ] Deve ter opção para o escritório de contabilidade, já cadastrado no sistema pela Associação, criar seu login e senha, incluindo os dados de e-mail, CRC e nome do contador que representa o escritório;
+- [ ] Deve ter opção para o escritório cadastrar um cliente (empresário), informando CNPJ e razão social;
+- [ ] Deve ter opção para o escritório enviar notificação ao cliente, solicitando autorização para consultar seus dados bancários;
+- [ ] Deve ter opção para o escritório selecionar um cliente em especial, informar um intervalo de data, e caso o cliente já tenha autorizado, obter
+seus dados bancários, gerar e exibir uma tabela de consolidação bancária, ilustrada na Tabela 1 a seguir. O preenchimento do campo categoria será explicado mais adiante, no item Q;
+- [ ] Deve ter opção de se exportar a tabela gerada em arquivo no formato Excel, no computador que exibe a versão web.
 
-The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/api-routes/introduction) instead of React pages.
 
-## Learn More
+## 🛠 Tecnologias
 
-To learn more about Next.js, take a look at the following resources:
+As seguintes ferramentas foram usadas na construção do projeto:
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+- [React](https://pt-br.reactjs.org/)
+- [TypeScript](https://www.typescriptlang.org/)
+- [Next.js](https://nextjs.org/)
+- [Styled Components](https://styled-components.com/)
