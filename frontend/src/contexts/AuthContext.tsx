@@ -54,7 +54,7 @@ export function AuthProvider({ children }: AuthProviderProps) {
       //   setUser(response.user as User)
       // })
       api
-        .get<ResponseApiSignIn>("/userInfo", {
+        .get<ResponseApiSignIn>("/me", {
           headers: {
             Authorization: `Bearer ${token}}`,
           },
