@@ -10,6 +10,7 @@ export type TransactionDTO = {
   accountId: string;
   providerCode: null;
   status: string;
+  definition: string;
   paymentData: {
     payer: {
       name: string;

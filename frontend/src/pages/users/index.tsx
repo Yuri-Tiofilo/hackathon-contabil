@@ -14,15 +14,25 @@ import {
   Thead,
   Tr,
   useBreakpointValue,
+  useDisclosure,
+  AlertDialog,
+  AlertDialogBody,
+  AlertDialogContent,
+  AlertDialogFooter,
+  AlertDialogHeader,
+  AlertDialogOverlay,
 } from "@chakra-ui/react";
 import { Layout } from "@/layout/index";
 import { GetServerSideProps } from "next";
-import { useState } from "react";
+import { useEffect, useState, useRef } from "react";
 import { FilterUser } from "@/components/FilterUser";
 import { colorPrimaryBg } from "@/styles/global";
 import { AiOutlineEye } from "react-icons/ai";
+import { RiAddFill } from "react-icons/ri";
 import { useRouter } from "next/router";
 import { UserDTO } from "@/dtos/users.types";
+import { api } from "@/services/api";
+import { parseCookies } from "nookies";
 
 interface UserProps {
   users: UserDTO[];
@@ -38,10 +48,27 @@ export default function User({ users }: UserProps) {
   const [usersData, setUsersData] = useState<UserDTO[]>(users);
   const [isLoading, setLoading] = useState(false);
   const [valueSearch, setValueSearch] = useState("");
+  const { isOpen, onOpen, onClose } = useDisclosure();
+  const cancelRef = useRef<HTMLButtonElement>(null);
+
+  const isTermAccepted: string = "reSendTerm";
 
   function handleDetailsUser(id: string) {
     push(`/users/${id}`);
   }
+
+  // async function fetchUsers() {
+  //   const { "hackathon.token": token } = parseCookies();
+  //   const response = await api.post("/api/business/all-users", {
+  //     token,
+  //   });
+
+  //   console.log(response);
+  // }
+
+  useEffect(() => {
+    // fetchUsers();
+  }, []);
 
   function renderTable() {
     return (
@@ -51,6 +78,7 @@ export default function User({ users }: UserProps) {
             <Th>Usuário</Th>
             {isWideVersion && <Th>Termo aceito?</Th>}
             <Th width="10px" />
+            {isWideVersion && <Th width="10px" />}
           </Tr>
         </Thead>
         <Tbody>
@@ -74,7 +102,43 @@ export default function User({ users }: UserProps) {
                 </Box>
               </Td>
               {isWideVersion && (
-                <Td>{element.isAccept ? "Aceito" : "Não aceito"}</Td>
+                <>
+                  <Td>{element.isAccept ? "Aceito" : "Não aceito"}</Td>
+                  {isTermAccepted === "reSendTerm" && (
+                    <Td>
+                      <Button
+                        as="a"
+                        size="sm"
+                        fontSize="small"
+                        colorScheme="teal"
+                        variant="outline"
+                        _hover={{
+                          cursor: "pointer",
+                        }}
+                        onClick={onOpen}
+                      >
+                        Re-Enviar Termo
+                      </Button>
+                    </Td>
+                  )}
+                  {isTermAccepted === "sendTerm" && (
+                    <Td>
+                      <Button
+                        as="a"
+                        size="sm"
+                        fontSize="small"
+                        colorScheme="teal"
+                        variant="outline"
+                        _hover={{
+                          cursor: "pointer",
+                        }}
+                        onClick={onOpen}
+                      >
+                        Enviar Termo
+                      </Button>
+                    </Td>
+                  )}
+                </>
               )}
               {isWideVersion && (
                 <Td>
@@ -112,6 +176,40 @@ export default function User({ users }: UserProps) {
             </Tr>
           ))}
         </Tbody>
+
+        <AlertDialog
+          isOpen={isOpen}
+          leastDestructiveRef={cancelRef}
+          onClose={onClose}
+        >
+          <AlertDialogOverlay color="white">
+            <AlertDialogContent bgColor="gray.800">
+              <AlertDialogHeader fontSize="lg" fontWeight="bold" color="white">
+                Enviar email de permissão de dados
+              </AlertDialogHeader>
+
+              <AlertDialogBody>
+                <p>Você tem certeza?</p>
+                <p>Você não poderá desfazer esta ação mais tarde.</p>
+              </AlertDialogBody>
+
+              <AlertDialogFooter>
+                <Button
+                  colorScheme="white"
+                  variant="outline"
+                  color="white"
+                  ref={cancelRef}
+                  onClick={onClose}
+                >
+                  Cancelar
+                </Button>
+                <Button colorScheme="green" onClick={onClose} ml={3}>
+                  Enviar
+                </Button>
+              </AlertDialogFooter>
+            </AlertDialogContent>
+          </AlertDialogOverlay>
+        </AlertDialog>
       </Table>
     );
   }
@@ -119,23 +217,39 @@ export default function User({ users }: UserProps) {
   return (
     <Layout>
       <Box flex="1" borderRadius={8} w="100%" bg="gray.800" p={["4", "8"]}>
-        <Flex justifyContent="space-between" flexDir={["column", "row"]}>
+        <Flex justifyContent="space-between" flexDir={["column", "row"]} mb="2">
           <Heading as="h2" size={"md"} fontWeight="bold" mb={["4", "0"]}>
             Listagem de Usuários
           </Heading>
 
-          <FilterUser
-            value={valueSearch}
-            onChange={(text) => setValueSearch(text.target.value)}
-            onKeyPress={(e) => {
-              if (e.key === "Enter") {
-                // fetchUserSearch(valueSearch);
-                console.log("");
-              }
-            }}
-            handleSearch={() => console.log("ve4io ")}
-            title="Buscar"
-          />
+          <Flex flexDir={["column", "row"]}>
+            <Button
+              as="a"
+              colorScheme="blue"
+              mr={["0", "4"]}
+              leftIcon={<Icon as={RiAddFill} fontSize="16" />}
+              _hover={{
+                cursor: "pointer",
+              }}
+              onClick={() => push("/users/create")}
+              order={["1", "0"]}
+            >
+              Adicionar
+            </Button>
+            <FilterUser
+              value={valueSearch}
+              onChange={(text) => setValueSearch(text.target.value)}
+              order={["2", "0"]}
+              onKeyPress={(e) => {
+                if (e.key === "Enter") {
+                  // fetchUserSearch(valueSearch);
+                  console.log("");
+                }
+              }}
+              handleSearch={() => console.log("ve4io ")}
+              title="Buscar"
+            />
+          </Flex>
         </Flex>
         {!isLoading ? (
           <>{renderTable()}</>
@@ -147,9 +261,21 @@ export default function User({ users }: UserProps) {
   );
 }
 
-export const getServerSideProps: GetServerSideProps<UserProps> = async () => {
+export const getServerSideProps: GetServerSideProps<UserProps> = async (
+  ctx
+) => {
   // const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/users`);
   // const users = await response.json();
+
+  const cookies = parseCookies(ctx);
+  if (!cookies["hackathon.token"]) {
+    return {
+      redirect: {
+        destination: "/",
+        permanent: false,
+      },
+    };
+  }
 
   return {
     props: {
@@ -158,7 +284,7 @@ export const getServerSideProps: GetServerSideProps<UserProps> = async () => {
           corporate_name: "Yuri Tiofilo escritório LTDA",
           cnpj: "02.628.768/0001-30",
 
-          isAccept: false,
+          isAccept: true,
         },
       ],
     },

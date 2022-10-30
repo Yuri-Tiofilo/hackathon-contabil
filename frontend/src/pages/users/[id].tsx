@@ -29,9 +29,12 @@ import { RiArrowLeftFill } from "react-icons/ri";
 import { useRouter } from "next/router";
 import { format } from "date-fns";
 import { Pagination } from "@/components/Pagination";
+import { parseCookies } from "nookies";
+import { GetServerSideProps } from "next";
 
 export default function UserDetails() {
-  const { back } = useRouter();
+  const { back, push, query } = useRouter();
+
   const [date, setDate] = useState("");
   const [dateTwo, setDateTwo] = useState("");
   const [transactions, setTransactions] = useState<TransactionDTO[]>(
@@ -41,9 +44,9 @@ export default function UserDetails() {
   async function fetchTransactions() {
     const transactionResponse = apiTransaction.results;
 
-    // const transactionResponse = await axios.get("https://api.pluggy.ai/items", {
+    // const transactionData = await axios.get("https://localhost:8000/api/", {
     //   headers: {
-    //     "X-API-KEY": apiKey,
+    //     "X-API-KEY": "",
     //     accept: "application/json",
     //     "content-type": "application/json",
     //   },
@@ -106,7 +109,12 @@ export default function UserDetails() {
               ml="2"
             />
             <Flex justifyContent="flex-end" ml="2">
-              <Button colorScheme="green">Gerar fluxo de caixa</Button>
+              <Button
+                colorScheme="green"
+                onClick={() => push(`/users/cash-flow/${query.id}`)}
+              >
+                Gerar balanço Patrimonial
+              </Button>
             </Flex>
           </Flex>
           <Box>
@@ -138,7 +146,7 @@ export default function UserDetails() {
                             w="14"
                             textOverflow="ellipsis"
                           >
-                            {element.description}
+                            {element.definition}
                           </Text>
                         </Box>
                       </Td>
@@ -183,3 +191,19 @@ export default function UserDetails() {
     </Layout>
   );
 }
+
+export const getServerSideProps: GetServerSideProps = async (ctx) => {
+  const cookies = parseCookies(ctx);
+  if (!cookies["hackathon.token"]) {
+    return {
+      redirect: {
+        destination: "/",
+        permanent: false,
+      },
+    };
+  }
+
+  return {
+    props: {},
+  };
+};
