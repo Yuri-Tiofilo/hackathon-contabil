@@ -7,7 +7,7 @@ type PropsButtonWidget = ButtonProps & {
 
 export function ButtonWidget({ children, ...rest }: PropsButtonWidget) {
   return (
-    <Button type="submit" mt="6" size="lg" {...rest}>
+    <Button mt="6" size="lg" {...rest}>
       {children}
     </Button>
   );

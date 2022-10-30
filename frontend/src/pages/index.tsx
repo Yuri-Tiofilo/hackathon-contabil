@@ -73,12 +73,12 @@ export default function Home() {
           Entrar
         </ButtonWidget>
         <ButtonWidget
+          as='a'
+          href='/first-access'
           w="100%"
           colorScheme="none"
           border="1px"
           borderColor="blue.500"
-          type="submit"
-          // isLoading={isSubmitting}
         >
           Primeiro Acesso
         </ButtonWidget>

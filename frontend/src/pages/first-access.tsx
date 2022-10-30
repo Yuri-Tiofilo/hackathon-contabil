@@ -14,7 +14,10 @@ import { Logo } from "@/components/Logo/logo.widget";
 
 type SignInFormData = {
   email: string;
+  username: string;
   password: string;
+  crc: string;
+  responsibleName: string;
 };
 
 const signInFormSchema = yup.object().shape({
@@ -58,10 +61,45 @@ export default function FirstAccess() {
             error={errors.email && errors.email?.message}
             {...register("email")}
           />
+          <InputForm
+            label="Nome do usuário"
+            nameForInput="UserName"
+            type="text"
+            placeholder="Nome do usuário"
+            error={errors.email && errors.email?.message}
+            {...register("username")}
+          />
+          <InputForm
+            label="Senha"
+            nameForInput="Password"
+            type="password"
+            placeholder="Senha"
+            error={errors.email && errors.email?.message}
+            {...register("password")}
+          />
+          <InputForm
+            label="CRC"
+            nameForInput="Crc"
+            type="text"
+            placeholder="CRC"
+            error={errors.email && errors.email?.message}
+            {...register("crc")}
+          />
+          <InputForm
+            label="Responsável pelo escritório"
+            nameForInput="ResponsibleName"
+            type="text"
+            placeholder="Responsável pelo escritório"
+            error={errors.email && errors.email?.message}
+            {...register("responsibleName")}
+          />
         </Stack>
 
         <ButtonWidget w="100%" type="submit" isLoading={isSubmitting}>
           Confirmar
+        </ButtonWidget>
+        <ButtonWidget as='a' href='/' bgColor='gray'  w="100%">
+          Voltar
         </ButtonWidget>
       </Flex>
     </Flex>
