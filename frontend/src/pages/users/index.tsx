@@ -56,17 +56,17 @@ export default function User({ users }: UserProps) {
     push(`/users/${id}`);
   }
 
-  async function fetchUsers() {
-    const { "hackathon.token": token } = parseCookies();
-    const response = await api.post("/api/business/all-users", {
-      token,
-    });
+  // async function fetchUsers() {
+  //   const { "hackathon.token": token } = parseCookies();
+  //   const response = await api.post("/api/business/all-users", {
+  //     token,
+  //   });
 
-    console.log(response);
-  }
+  //   console.log(response);
+  // }
 
   useEffect(() => {
-    fetchUsers();
+    // fetchUsers();
   }, []);
 
   function renderTable() {
@@ -244,9 +244,21 @@ export default function User({ users }: UserProps) {
   );
 }
 
-export const getServerSideProps: GetServerSideProps<UserProps> = async () => {
+export const getServerSideProps: GetServerSideProps<UserProps> = async (
+  ctx
+) => {
   // const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/users`);
   // const users = await response.json();
+
+  const cookies = parseCookies(ctx);
+  if (!cookies["hackathon.token"]) {
+    return {
+      redirect: {
+        destination: "/",
+        permanent: false,
+      },
+    };
+  }
 
   return {
     props: {

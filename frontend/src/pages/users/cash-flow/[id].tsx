@@ -1,5 +1,7 @@
 import { Layout } from "@/layout/index";
 import { Box } from "@chakra-ui/react";
+import { GetServerSideProps } from "next";
+import { parseCookies } from "nookies";
 
 export default function CashFlow() {
   return (
@@ -10,3 +12,19 @@ export default function CashFlow() {
     </Layout>
   );
 }
+
+export const getServerSideProps: GetServerSideProps = async (ctx) => {
+  const cookies = parseCookies(ctx);
+  if (!cookies["hackathon.token"]) {
+    return {
+      redirect: {
+        destination: "/",
+        permanent: false,
+      },
+    };
+  }
+
+  return {
+    props: {},
+  };
+};
