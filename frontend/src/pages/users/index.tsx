@@ -14,10 +14,17 @@ import {
   Thead,
   Tr,
   useBreakpointValue,
+  useDisclosure,
+  AlertDialog,
+  AlertDialogBody,
+  AlertDialogContent,
+  AlertDialogFooter,
+  AlertDialogHeader,
+  AlertDialogOverlay,
 } from "@chakra-ui/react";
 import { Layout } from "@/layout/index";
 import { GetServerSideProps } from "next";
-import { useState } from "react";
+import { useState, useRef } from "react";
 import { FilterUser } from "@/components/FilterUser";
 import { colorPrimaryBg } from "@/styles/global";
 import { AiOutlineEye } from "react-icons/ai";
@@ -38,6 +45,11 @@ export default function User({ users }: UserProps) {
   const [usersData, setUsersData] = useState<UserDTO[]>(users);
   const [isLoading, setLoading] = useState(false);
   const [valueSearch, setValueSearch] = useState("");
+  const { isOpen, onOpen , onClose } = useDisclosure();
+  const cancelRef = useRef<HTMLButtonElement>(null);
+
+
+  const isTermAccepted:string = 'reSendTerm';
 
   function handleDetailsUser(id: string) {
     push(`/users/${id}`);
@@ -50,6 +62,7 @@ export default function User({ users }: UserProps) {
           <Tr>
             <Th>Usuário</Th>
             {isWideVersion && <Th>Termo aceito?</Th>}
+            <Th width="10px" />
             <Th width="10px" />
           </Tr>
         </Thead>
@@ -74,7 +87,43 @@ export default function User({ users }: UserProps) {
                 </Box>
               </Td>
               {isWideVersion && (
-                <Td>{element.isAccept ? "Aceito" : "Não aceito"}</Td>
+                <>
+                  <Td>{element.isAccept ? "Aceito" : "Não aceito"}</Td>
+                  { isTermAccepted  === 'reSendTerm' && (
+                    <Td>
+                      <Button
+                        as="a"
+                        size="sm"
+                        fontSize="small"
+                        colorScheme="teal"
+                        variant="outline"
+                        _hover={{
+                          cursor: "pointer",
+                        }}
+                        onClick={onOpen}
+                      >
+                        Re-Enviar Termo
+                      </Button>
+                    </Td>
+                  )}
+                  { isTermAccepted === 'sendTerm' && (
+                    <Td>
+                      <Button
+                        as="a"
+                        size="sm"
+                        fontSize="small"
+                        colorScheme="teal"
+                        variant="outline"
+                        _hover={{
+                          cursor: "pointer",
+                        }}
+                        onClick={onOpen}
+                      >
+                        Enviar Termo
+                      </Button>
+                    </Td>
+                  )}
+                </>
               )}
               {isWideVersion && (
                 <Td>
@@ -112,6 +161,34 @@ export default function User({ users }: UserProps) {
             </Tr>
           ))}
         </Tbody>
+
+        <AlertDialog
+          isOpen={isOpen}
+          leastDestructiveRef={cancelRef}
+          onClose={onClose}
+        >
+          <AlertDialogOverlay color="white">
+            <AlertDialogContent bgColor="gray.800">
+              <AlertDialogHeader fontSize='lg' fontWeight='bold' color="white">
+                Enviar email de permissão de dados
+              </AlertDialogHeader>
+
+              <AlertDialogBody>
+                <p>Você tem certeza?</p>
+                <p>Você não poderá desfazer esta ação mais tarde.</p>
+              </AlertDialogBody>
+
+              <AlertDialogFooter>
+                <Button colorScheme='white' variant='outline' color='white' ref={cancelRef} onClick={onClose}>
+                  Cancelar
+                </Button>
+                <Button colorScheme='green' onClick={onClose} ml={3}>
+                  Enviar
+                </Button>
+              </AlertDialogFooter>
+            </AlertDialogContent>
+          </AlertDialogOverlay>
+        </AlertDialog>
       </Table>
     );
   }
