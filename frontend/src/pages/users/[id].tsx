@@ -113,7 +113,7 @@ export default function UserDetails() {
                 colorScheme="green"
                 onClick={() => push(`/users/cash-flow/${query.id}`)}
               >
-                Gerar fluxo de caixa
+                Gerar balanço Patrimonial
               </Button>
             </Flex>
           </Flex>
@@ -146,7 +146,7 @@ export default function UserDetails() {
                             w="14"
                             textOverflow="ellipsis"
                           >
-                            {element.description}
+                            {element.definition}
                           </Text>
                         </Box>
                       </Td>
