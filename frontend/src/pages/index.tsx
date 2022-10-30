@@ -13,12 +13,12 @@ import { InputForm } from "@/components/Form/inputForm.widget";
 import { Logo } from "@/components/Logo/logo.widget";
 
 type SignInFormData = {
-  email: string;
+  username: string;
   password: string;
 };
 
 const signInFormSchema = yup.object().shape({
-  email: yup.string().required("E-mail obrigatório").email("E-mail inválido"),
+  username: yup.string().required("E-mail obrigatório"),
   password: yup.string().required("Senha é obrigatório"),
 });
 
@@ -52,19 +52,19 @@ export default function Home() {
         <Logo pb="4" />
         <Stack spacing="2">
           <InputForm
-            label="Email"
-            nameForInput="email"
-            type="email"
-            placeholder="E-mail"
-            error={errors.email && errors.email?.message}
-            {...register("email")}
+            label="Username"
+            nameForInput="username"
+            type="username"
+            placeholder="Username"
+            error={errors.username && errors.username?.message}
+            {...register("username")}
           />
           <InputForm
             label="Senha"
             nameForInput="password"
             placeholder="Senha"
             type="password"
-            error={errors.password && errors.email?.message}
+            error={errors.password && errors.password?.message}
             {...register("password")}
           />
         </Stack>
@@ -72,7 +72,14 @@ export default function Home() {
         <ButtonWidget w="100%" type="submit" isLoading={isSubmitting}>
           Entrar
         </ButtonWidget>
-        <ButtonWidget w="100%" colorScheme="none" border="1px" borderColor="blue.500"  type="submit" isLoading={isSubmitting}>
+        <ButtonWidget
+          w="100%"
+          colorScheme="none"
+          border="1px"
+          borderColor="blue.500"
+          type="submit"
+          // isLoading={isSubmitting}
+        >
           Primeiro Acesso
         </ButtonWidget>
       </Flex>

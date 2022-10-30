@@ -17,12 +17,14 @@ import {
 } from "@chakra-ui/react";
 import { Layout } from "@/layout/index";
 import { GetServerSideProps } from "next";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { FilterUser } from "@/components/FilterUser";
 import { colorPrimaryBg } from "@/styles/global";
 import { AiOutlineEye } from "react-icons/ai";
 import { useRouter } from "next/router";
 import { UserDTO } from "@/dtos/users.types";
+import { api } from "@/services/api";
+import { parseCookies } from "nookies";
 
 interface UserProps {
   users: UserDTO[];
@@ -42,6 +44,19 @@ export default function User({ users }: UserProps) {
   function handleDetailsUser(id: string) {
     push(`/users/${id}`);
   }
+
+  async function fetchUsers() {
+    const { "hackathon.token": token } = parseCookies();
+    const response = await api.post("/api/business/all-users", {
+      token,
+    });
+
+    console.log(response);
+  }
+
+  useEffect(() => {
+    fetchUsers();
+  }, []);
 
   function renderTable() {
     return (

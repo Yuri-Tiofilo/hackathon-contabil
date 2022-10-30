@@ -31,7 +31,8 @@ import { format } from "date-fns";
 import { Pagination } from "@/components/Pagination";
 
 export default function UserDetails() {
-  const { back } = useRouter();
+  const { back, push, query } = useRouter();
+
   const [date, setDate] = useState("");
   const [dateTwo, setDateTwo] = useState("");
   const [transactions, setTransactions] = useState<TransactionDTO[]>(
@@ -41,13 +42,13 @@ export default function UserDetails() {
   async function fetchTransactions() {
     const transactionResponse = apiTransaction.results;
 
-    // const transactionResponse = await axios.get("https://api.pluggy.ai/items", {
-    //   headers: {
-    //     "X-API-KEY": apiKey,
-    //     accept: "application/json",
-    //     "content-type": "application/json",
-    //   },
-    // });
+    const transactionData = await axios.get("https://localhost:8000/api/", {
+      headers: {
+        "X-API-KEY": "",
+        accept: "application/json",
+        "content-type": "application/json",
+      },
+    });
 
     setTransactions(apiTransaction.results as TransactionDTO[]);
 
@@ -106,7 +107,12 @@ export default function UserDetails() {
               ml="2"
             />
             <Flex justifyContent="flex-end" ml="2">
-              <Button colorScheme="green">Gerar fluxo de caixa</Button>
+              <Button
+                colorScheme="green"
+                onClick={() => push(`/users/cash-flow/${query.id}`)}
+              >
+                Gerar fluxo de caixa
+              </Button>
             </Flex>
           </Flex>
           <Box>

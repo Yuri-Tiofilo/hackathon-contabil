@@ -12,7 +12,7 @@ let isRefreshing = false;
 let failedRequestsQueue: FailedRequestsQueue[] = [];
 
 export const api = axios.create({
-  baseURL: "http://localhost:3333",
+  baseURL: "http://localhost:8000",
   headers: {
     Authorization: `Bearer ${cookies["hackathon.token"]}`,
   },

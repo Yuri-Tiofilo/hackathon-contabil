@@ -7,7 +7,7 @@ import { setCookie, parseCookies, destroyCookie } from "nookies";
 type ResponseApiSignIn = {
   permissions: string[];
   roles: string[];
-  token: string;
+  access_token: string;
   refreshToken: string;
   email: string;
 };
@@ -19,7 +19,7 @@ type User = {
 };
 
 type SignInCredentials = {
-  email: string;
+  username: string;
   password: string;
 };
 
@@ -76,32 +76,30 @@ export function AuthProvider({ children }: AuthProviderProps) {
     }
   }, []);
 
-  async function signIn({ email, password }: SignInCredentials) {
+  async function signIn({ username, password }: SignInCredentials) {
     try {
-      /* Sending a post request to the server with the email and password. */
-      /* Sending a post request to the server with the email and password. */
-      // const response = await api.post<ResponseApiSignIn>("/sessions", {
-      //   email,
-      //   password,
-      // });
+      const response = await api.post<ResponseApiSignIn>("/api/auth/login", {
+        username,
+        password,
+      });
 
-      // const { token, refreshToken, permissions, roles } = response.data;
+      const { access_token } = response.data;
 
-      // setCookie(undefined, "hackathon.token", token, {
-      //   maxAge: 60 * 60 * 24 * 30, // 1 mes
-      //   path: "/",
-      // });
+      setCookie(undefined, "hackathon.token", access_token, {
+        maxAge: 60 * 60 * 24 * 30, // 1 mes
+        path: "/",
+      });
       // setCookie(undefined, "hackathon.refreshToken", refreshToken, {
       //   maxAge: 60 * 60 * 24 * 30, // 1 mes
       //   path: "/",
       // });
 
       // console.log(response);
-      setUser({
-        email,
-        // permissions,
-        // roles,
-      });
+      // setUser({
+      //   // email,
+      //   // permissions,
+      //   // roles,
+      // });
 
       // api.defaults.headers["Authorization"] = `Bearer ${token}`;
 
