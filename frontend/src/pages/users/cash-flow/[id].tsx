@@ -34,7 +34,21 @@ export default function CashFlow() {
             <Heading as="h2" size={"md"} fontWeight="bold" mb={["4", "0"]}>
               Balanço Patrimonial
             </Heading>
-            <Button onClick={onOpen}>Gerar DRE</Button>
+            <Flex>
+              <Button
+                bg="transparent"
+                border="1px"
+                borderColor="blue.500"
+                mr="2"
+                color="blue.500"
+                _hover={{
+                  bg: "transparent",
+                }}
+              >
+                Gerar EXCEL
+              </Button>
+              <Button onClick={onOpen}>Gerar DRE</Button>
+            </Flex>
           </Flex>
 
           <Table colorScheme="whiteAlpha">
@@ -54,7 +68,7 @@ export default function CashFlow() {
                   <Text fontWeight="bold">Ativo</Text>
                 </Td>
                 <Td>
-                  <Text> {formattedPrice({ number: 19595.05 })}</Text>
+                  <Text> {formattedPrice({ number: 51214.79 })}</Text>
                 </Td>
                 <Td>
                   <Text> - </Text>
@@ -66,7 +80,7 @@ export default function CashFlow() {
                   <Text>-</Text>
                 </Td>
                 <Td>
-                  <Text>-</Text>
+                  <Text> {formattedPrice({ number: 51214.79 })}</Text>
                 </Td>
               </Tr>
               <Tr>
@@ -74,7 +88,7 @@ export default function CashFlow() {
                   <Text fontWeight="bold">Ativo Circulante</Text>
                 </Td>
                 <Td>
-                  <Text>-</Text>
+                  <Text> {formattedPrice({ number: 11214.79 })}</Text>
                 </Td>
                 <Td>
                   <Text> - </Text>
@@ -91,10 +105,10 @@ export default function CashFlow() {
               </Tr>
               <Tr>
                 <Td>
-                  <Text fontWeight="bold">Banco</Text>
+                  <Text fontWeight="bold">Caixa</Text>
                 </Td>
                 <Td>
-                  <Text> {formattedPrice({ number: 1214.79 })}</Text>
+                  <Text> {formattedPrice({ number: 9980.54 })}</Text>
                 </Td>
                 <Td>
                   <Text> - </Text>
@@ -106,7 +120,27 @@ export default function CashFlow() {
                   <Text>-</Text>
                 </Td>
                 <Td>
-                  <Text>{formattedPrice({ number: 16846.01 })}</Text>
+                  <Text>-</Text>
+                </Td>
+              </Tr>
+              <Tr>
+                <Td>
+                  <Text fontWeight="bold">Banco</Text>
+                </Td>
+                <Td>
+                  <Text> -</Text>
+                </Td>
+                <Td>
+                  <Text> - </Text>
+                </Td>
+                <Td>
+                  <Text>-</Text>
+                </Td>
+                <Td>
+                  <Text>-</Text>
+                </Td>
+                <Td>
+                  <Text>-</Text>
                 </Td>
               </Tr>
               <Tr>
@@ -114,32 +148,122 @@ export default function CashFlow() {
                   <Text fontWeight="bold">Clientes</Text>
                 </Td>
                 <Td>
-                  <Text> {formattedPrice({ number: 18360.8 })}</Text>
+                  -{/* <Text> {formattedPrice({ number: 18360.8 })}</Text> */}
                 </Td>
                 <Td>
                   <Text> - </Text>
                 </Td>
                 <Td>
-                  <Text>Distribuição de Lucro</Text>
+                  <Text>-</Text>
+                </Td>
+                <Td>
+                  <Text>-</Text>
+                </Td>
+                <Td>-</Td>
+              </Tr>
+              <Tr>
+                <Td>
+                  <Text fontWeight="bold">Aplicações Financeira</Text>
+                </Td>
+                <Td>
+                  -{/* <Text> {formattedPrice({ number: 18360.8 })}</Text> */}
+                </Td>
+                <Td>
+                  <Text> - </Text>
                 </Td>
                 <Td>
                   <Text>-</Text>
                 </Td>
                 <Td>
-                  <Text>{formattedPrice({ number: 300 })}</Text>
+                  <Text>-</Text>
                 </Td>
+                <Td>-</Td>
               </Tr>
-              <Tr bgColor="gray.700">
+              <Tr>
                 <Td>
-                  <Text fontWeight="bold">Total Passivo Circulante</Text>
+                  <Text fontWeight="bold">ATIVO NÃO CIRCULANTE</Text>
                 </Td>
-                <Td></Td>
-                <Td></Td>
-                <Td></Td>
-                <Td></Td>
                 <Td>
-                  <Text>{formattedPrice({ number: 17146.01 })}</Text>
+                  <Text> {formattedPrice({ number: 40000.0 })}</Text>
                 </Td>
+                <Td>
+                  <Text> - </Text>
+                </Td>
+                <Td>
+                  <Text>-</Text>
+                </Td>
+                <Td>
+                  <Text>-</Text>
+                </Td>
+                <Td>-</Td>
+              </Tr>
+              <Tr>
+                <Td>
+                  <Text fontWeight="bold">Imobilizado</Text>
+                </Td>
+                <Td>
+                  <Text> {formattedPrice({ number: 40000.0 })}</Text>
+                </Td>
+                <Td>
+                  <Text> - </Text>
+                </Td>
+                <Td>
+                  <Text>-</Text>
+                </Td>
+                <Td>
+                  <Text>-</Text>
+                </Td>
+                <Td>-</Td>
+              </Tr>
+              <Tr>
+                <Td>
+                  <Text fontWeight="bold">Imobilizado</Text>
+                </Td>
+                <Td>
+                  <Text> {formattedPrice({ number: 40000.0 })}</Text>
+                </Td>
+                <Td>
+                  <Text> - </Text>
+                </Td>
+                <Td>
+                  <Text>-</Text>
+                </Td>
+                <Td>
+                  <Text>-</Text>
+                </Td>
+                <Td>-</Td>
+              </Tr>
+              <Tr>
+                <Td></Td>
+                <Td></Td>
+                <Td></Td>
+
+                <Td></Td>
+                <Td></Td>
+                <Td></Td>
+              </Tr>
+
+              <Tr>
+                <Td></Td>
+                <Td></Td>
+                <Td></Td>
+
+                <Td>
+                  <Text fontWeight="bold">Patrimonio Liquido</Text>
+                </Td>
+                <Td>-</Td>
+                <Td>{formattedPrice({ number: 51214.79 })}</Td>
+              </Tr>
+              <Tr>
+                <Td></Td>
+                <Td></Td>
+                <Td></Td>
+
+                <Td>
+                  <Text>Capital Social</Text>
+                </Td>
+                <Td>-</Td>
+                <Td>{formattedPrice({ number: 49700.0 })}</Td>
               </Tr>
               <Tr>
                 <Td></Td>
@@ -151,24 +275,38 @@ export default function CashFlow() {
                 <Td></Td>
               </Tr>
               <Tr>
+                <Td></Td>
+                <Td></Td>
+                <Td></Td>
+
                 <Td>
-                  <Text fontWeight="bold">Ativo</Text>
+                  <Text fontWeight="bold">Reservas de Lucros ou prejuizos</Text>
                 </Td>
+                <Td>-</Td>
+                <Td>{formattedPrice({ number: 1514.79 })}</Td>
+              </Tr>
+
+              <Tr>
+                <Td></Td>
+                <Td></Td>
+                <Td></Td>
+
                 <Td>
-                  <Text> {formattedPrice({ number: 19595.05 })}</Text>
+                  <Text>Lucro do exercicio anteriores</Text>
                 </Td>
+                <Td>-</Td>
+                <Td>-</Td>
+              </Tr>
+              <Tr>
+                <Td></Td>
+                <Td></Td>
+                <Td></Td>
+
                 <Td>
-                  <Text> - </Text>
+                  <Text>Lucro do exercicio</Text>
                 </Td>
-                <Td>
-                  <Text fontWeight="bold">Passivo</Text>
-                </Td>
-                <Td>
-                  <Text>-</Text>
-                </Td>
-                <Td>
-                  <Text>-</Text>
-                </Td>
+                <Td>-</Td>
+                <Td>{formattedPrice({ number: 1514.79 })}</Td>
               </Tr>
             </Tbody>
           </Table>
@@ -194,7 +332,7 @@ export default function CashFlow() {
                     <Text fontWeight="bold">Receita Bruta</Text>
                   </Td>
                   <Td>
-                    <Text> {formattedPrice({ number: 15595.05 })}</Text>
+                    <Text> {formattedPrice({ number: 18360.8 })}</Text>
                   </Td>
                 </Tr>
                 <Tr>
@@ -210,7 +348,10 @@ export default function CashFlow() {
                     <Text fontWeight="bold">Receita liquida</Text>
                   </Td>
                   <Td>
-                    <Text> {formattedPrice({ number: 19595.05 })}</Text>
+                    <Text fontWeight="bold">
+                      {" "}
+                      {formattedPrice({ number: 18360.8 })}
+                    </Text>
                   </Td>
                 </Tr>
                 <Tr>
@@ -219,6 +360,63 @@ export default function CashFlow() {
                   </Td>
                   <Td>
                     <Text> -</Text>
+                  </Td>
+                </Tr>
+                <Tr>
+                  <Td>
+                    <Text>Lucro Bruto</Text>
+                  </Td>
+                  <Td>
+                    <Text fontWeight="bold">
+                      {" "}
+                      {formattedPrice({ number: 18360.8 })}
+                    </Text>
+                  </Td>
+                </Tr>
+                <Tr>
+                  <Td>
+                    <Text>Despesas Operacionais</Text>
+                  </Td>
+                  <Td>
+                    <Text>-{formattedPrice({ number: 301.02 })}</Text>
+                  </Td>
+                </Tr>
+                <Tr>
+                  <Td>
+                    <Text>Despesas com vendas</Text>
+                  </Td>
+                  <Td>
+                    <Text fontSize="15px">
+                      -{formattedPrice({ number: 16544.99 })}
+                    </Text>
+                  </Td>
+                </Tr>
+                <Tr>
+                  <Td>
+                    <Text>Despesas Financeiras</Text>
+                  </Td>
+                  <Td>-</Td>
+                </Tr>
+                <Tr>
+                  <Td>
+                    <Text>Receitas Financeiras</Text>
+                  </Td>
+                  <Td>-</Td>
+                </Tr>
+                <Tr>
+                  <Td>
+                    <Text>Despesas gerais e administrativas</Text>
+                  </Td>
+                  <Td>-</Td>
+                </Tr>
+                <Tr>
+                  <Td>
+                    <Text fontWeight="bold">Lucro/prejuízo operacional</Text>
+                  </Td>
+                  <Td>
+                    <Text fontWeight="bold">
+                      {formattedPrice({ number: 1514.79 })}
+                    </Text>
                   </Td>
                 </Tr>
               </Tbody>
