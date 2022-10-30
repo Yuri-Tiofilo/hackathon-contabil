@@ -1,22 +1,37 @@
 import React from 'react';
 import { Text, View } from 'react-native';
 
-import { ContainerCard, ColorType, ViewColor, InfoTrans, ViewRowInfo } from './styles';
+import { format } from 'date-fns'
 
-const CardExtrato = () => {
+import { 
+  ContainerCard, 
+  ColorType, 
+  ViewColor, 
+  InfoTrans, 
+  ViewRowInfo,
+  TextRowTop,
+  TextRowBottom
+} from './styles';
+
+const CardExtrato = ({
+  type, definition, category, date, value
+}) => {
   return (
     <ContainerCard>
       <ViewColor>
-        <ColorType />
+        <ColorType isDebit={type == 'DEBITO' ? true : false}/>
       </ViewColor>
       <InfoTrans>
         <ViewRowInfo>
-          <Text>CREDITO</Text>
-          <Text>20/12/2022</Text>
+          <TextRowTop>{type}</TextRowTop>
+          <TextRowTop>{format(new Date(date), "dd/MM/yyyy")}</TextRowTop>
         </ViewRowInfo>
         <ViewRowInfo>
-          <Text>Supermercado do Zé</Text>
-          <Text>R$400,00</Text>
+          <TextRowBottom numberOfLines={1}>{definition}</TextRowBottom>
+          <TextRowBottom>R${value.toFixed(2).replace('.', ',')}</TextRowBottom>
+        </ViewRowInfo>
+        <ViewRowInfo>
+          <TextRowTop numberOfLines={1}>{category}</TextRowTop>
         </ViewRowInfo>
       </InfoTrans>
     </ContainerCard>

@@ -6,7 +6,14 @@ export const ContainerCard = styled.View`
 
   display: flex;
   flex-direction: row;
-  background-color: ${({ theme }) => theme.COLORS.GREEN};
+
+  margin-bottom: 10px;
+
+  background-color: ${({ theme }) => theme.COLORS.WHITE};
+
+  border-bottom-width: 1px;
+  border-style: solid;
+  border-color: ${({ theme }) => theme.COLORS.GRAY1};
 `
 
 export const ViewColor = styled.View`
@@ -15,11 +22,13 @@ export const ViewColor = styled.View`
 `
 
 export const ColorType = styled.View`
-  width: 15px;
-  height: 15px;
+  width: 10px;
+  height: 10px;
+
+  margin-top: 2px;
 
   display: flex;
-  background-color: ${({ theme }) => theme.COLORS.GREEN};
+  background-color: ${({ theme, isDebit }) => isDebit ? theme.COLORS.RED : theme.COLORS.GREEN};
 `
 
 export const InfoTrans = styled.View`
@@ -27,10 +36,9 @@ export const InfoTrans = styled.View`
   flex: 1;
 
   display: flex;
-  /* align-items: center; */
-  justify-content: space-around;
+  /* justify-content: space-around; */
 
-  background-color: #F00;
+  padding-left: 5px;
 `
 
 export const ViewRowInfo = styled.View`
@@ -38,4 +46,26 @@ export const ViewRowInfo = styled.View`
   align-items: center;
   display: flex;
   flex-direction: row;
+
+  margin-bottom: 6px;
+`
+
+export const TextRowTop = styled.Text`
+  font-size: 12px;
+  color: ${({ theme }) => theme.COLORS.GRAY1};
+
+  max-width: 225px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+`
+
+export const TextRowBottom = styled.Text`
+  font-size: 16px;
+  color: ${({ theme }) => theme.COLORS.GRAY2};
+
+  max-width: 225px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 `

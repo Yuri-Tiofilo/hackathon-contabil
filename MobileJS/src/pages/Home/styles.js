@@ -2,7 +2,7 @@ import styled from 'styled-components/native';
 
 export const Container = styled.View`
   width: 100%;
-  height: 100%;
+  /* height: 100%; */
 
   display: flex;
   align-items: center;
@@ -58,11 +58,23 @@ export const TextValorTotal = styled.Text`
   color: ${({ theme }) => theme.COLORS.GRAY2};
 `
 
-export const Divider = styled.View`
-  width: 100px;
-  height: 10px;
+export const TitlePage = styled.Text`
+  font-size:  22px;
+  color: ${({ theme }) => theme.COLORS.GRAY2};
 
+  margin: 15px 0 20px;
+`
+
+export const ScrollView = styled.ScrollView`
   display: flex;
 
-  background-color: red;
+  width: 100%;
+  height: 100px;
+`
+
+export const ViewScrollView = styled.View`
+  display: flex;
+
+  width: 100%;
+  height: 400px;
 `

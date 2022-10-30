@@ -1,8 +1,10 @@
 import React from 'react';
-import { View, ActivityIndicator } from 'react-native';
+import { View, ActivityIndicator, ViewBase } from 'react-native';
 
 import AuthRoutes from './auth.routes';
 import AppRoutes from './app.routes';
+
+import TabBar from '../components/TabBar'
 
 const Routes= () => {
   // const { user, loading } = useAuth();
@@ -15,7 +17,14 @@ const Routes= () => {
   //   );
   // }
 
-  return <AppRoutes />;
+  // return (
+  //   <View>
+  //     <AppRoutes />
+  //     <TabBar />
+  //   </View>
+  // );
+
+  return (<TabBar />);
 };
 
 export default Routes;

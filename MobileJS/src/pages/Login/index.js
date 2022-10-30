@@ -19,7 +19,6 @@ const Login = ({navigation}) => {
   return (
     <TouchableNativeFeedback onPress={() => Keyboard.dismiss()}>
     <Container>
-        
         <ContainerInput>
           <Title>Faça seu login</Title>
           <TextInputStyled 

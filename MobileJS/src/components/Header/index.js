@@ -10,7 +10,7 @@ const Header = () => {
     <Container>
       <ViewPerson>
         <Image />
-        <Name>Tiago de Freitas</Name>
+        <Name>Empresario</Name>
       </ViewPerson>
       <ViewPerson>
         <MaterialIcons name="notifications-none" size={24} color="#FFF" />

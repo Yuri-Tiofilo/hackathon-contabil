@@ -1,0 +1,371 @@
+{
+  "total": 13,
+  "totalPages": 1,
+  "page": 1,
+  "results": [
+    {
+      "id": "1a41f44c-c1e2-4770-9796-286fb397f492",
+      "description": "CXE SAQUE 000091.001008",
+      "descriptionRaw": "Saque realizado no caixa eletrônico.",
+      "definition": "Saque em dinheiro",
+      "currencyCode": "BRL",
+      "amount": -300,
+      "date": "2022-09-12T03:00:00.000Z",
+      "category": "Gastos",
+      "balance": 1234.25,
+      "accountId": "ce86e298-d0fb-4c1a-b718-d4ed252876b0",
+      "providerCode": null,
+      "status": "POSTED",
+      "paymentData": null,
+      "type": "DEBIT",
+      "creditCardMetadata": null,
+      "merchant": null
+    },
+    {
+      "id": "e6d6d054-2f11-412b-94e7-cf80e8a38447",
+      "description": "TRANSF RECEBIDO MESMO TITUL DOC",
+      "descriptionRaw": "Lançamento referente a pagamento de boletos, transferências, DOCs, TEDs e PIX.",
+      "definition": "Clientes a receber",
+      "currencyCode": "BRL",
+      "amount": 900.78,
+      "date": "2022-09-11T03:00:00.000Z",
+      "category": null,
+      "balance": 1534.25,
+      "accountId": "ce86e298-d0fb-4c1a-b718-d4ed252876b0",
+      "providerCode": null,
+      "status": "POSTED",
+      "paymentData": {
+        "payer": {
+          "name": "Tiago Rodrigues Santos",
+          "branchNumber": "090",
+          "accountNumber": "1234-5",
+          "routingNumber": "001",
+          "documentNumber": {
+            "type": "CPF",
+            "value": "882.937.076-23"
+          },
+          "routingNumberISPB": "60701190"
+        },
+        "reason": "Taxa de serviço",
+        "receiver": {
+          "name": "Tiago Rodrigues Santos",
+          "branchNumber": "090",
+          "accountNumber": "1234-5",
+          "routingNumber": "001",
+          "documentNumber": {
+            "type": "CPF",
+            "value": "882.937.076-23"
+          },
+          "routingNumberISPB": "60701190"
+        },
+        "paymentMethod": "DOC",
+        "referenceNumber": "123456789"
+      },
+      "type": "CREDIT",
+      "creditCardMetadata": null,
+      "merchant": null
+    },
+    {
+      "id": "897dffe0-be32-440e-a172-4f18a1f035ae",
+      "description": "PAGAMENTO CARTAO DE DEBITO GETNET-MAESTRO",
+      "descriptionRaw": null,
+      "definition": "Clientes a receber",
+      "currencyCode": "BRL",
+      "amount": 1435.64,
+      "date": "2022-09-10T03:00:00.000Z",
+      "category": null,
+      "balance": 633.47,
+      "accountId": "ce86e298-d0fb-4c1a-b718-d4ed252876b0",
+      "providerCode": null,
+      "status": "POSTED",
+      "paymentData": null,
+      "type": "CREDIT",
+      "creditCardMetadata": null,
+      "merchant": null
+    },
+    {
+      "id": "67e06c6c-4cae-4066-93fa-d1195baee044",
+      "description": "PGTO TITULO OUTRO BCO - INTERNET BELLA VIOLA MADEIRAS",
+      "descriptionRaw": "Lançamento referente a pagamento de boletos, transferências, DOCs, TEDs e PIX.",
+      "definition": "Fornecedor",
+      "currencyCode": "BRL",
+      "amount": -100,
+      "date": "2022-09-05T03:00:00.000Z",
+      "category": "Bela Viola Madeiras",
+      "balance": -821.63,
+      "accountId": "ce86e298-d0fb-4c1a-b718-d4ed252876b0",
+      "providerCode": null,
+      "status": "POSTED",
+      "paymentData": null,
+      "type": "DEBIT",
+      "creditCardMetadata": null,
+      "merchant": null
+    },
+    {
+      "id": "4a597466-3389-4df1-9263-da7f7b8f1a17",
+      "description": "RESGATE AUT CONTAMAX EMPRESARIAL",
+      "descriptionRaw": null,
+      "definition": "Aplicação financeira",
+      "currencyCode": "BRL",
+      "amount": 19.46,
+      "date": "2022-09-05T03:00:00.000Z",
+      "category": "Resgate",
+      "balance": -802.17,
+      "accountId": "ce86e298-d0fb-4c1a-b718-d4ed252876b0",
+      "providerCode": null,
+      "status": "POSTED",
+      "paymentData": null,
+      "type": "CREDIT",
+      "creditCardMetadata": null,
+      "merchant": null
+    },
+    {
+      "id": "64fc137b-23a5-4941-accd-1fbb5de6b7b0",
+      "description": "PGTO TITULO OUTRO BCO - INTERNET BANCO YAMAHA MOTOR DO BRA",
+      "descriptionRaw": "Lançamento referente a pagamento de boletos, transferências, DOCs, TEDs e PIX.",
+      "definition": "Fornecedor",
+      "currencyCode": "BRL",
+      "amount": -16000,
+      "date": "2022-09-01T03:00:00.000Z",
+      "category": "Banco Yamaha Motor",
+      "balance": -721.63,
+      "accountId": "ce86e298-d0fb-4c1a-b718-d4ed252876b0",
+      "providerCode": null,
+      "status": "POSTED",
+      "paymentData": null,
+      "type": "DEBIT",
+      "creditCardMetadata": null,
+      "merchant": null
+    },
+    {
+      "id": "adac2508-63e4-4c79-87dd-c0f84446d244",
+      "description": "REDE   VISA DB083323902",
+      "descriptionRaw": null,
+      "definition": "Clientes a receber",
+      "currencyCode": "BRL",
+      "amount": 19.5,
+      "date": "2022-08-30T03:00:00.000Z",
+      "category": null,
+      "balance": 15278.37,
+      "accountId": "ce86e298-d0fb-4c1a-b718-d4ed252876b0",
+      "providerCode": null,
+      "status": "POSTED",
+      "paymentData": null,
+      "type": "CREDIT",
+      "creditCardMetadata": null,
+      "merchant": null
+    },
+    {
+      "id": "e1594acd-64d6-4f68-b4f7-518e70742ed3",
+      "description": "REDE   ELO  DB083323902",
+      "definition": "Clientes a receber",
+      "descriptionRaw": null,
+      "currencyCode": "BRL",
+      "amount": 4.88,
+      "date": "2022-08-01T03:00:00.000Z",
+      "category": null,
+      "balance": 15258.87,
+      "accountId": "ce86e298-d0fb-4c1a-b718-d4ed252876b0",
+      "providerCode": null,
+      "status": "POSTED",
+      "paymentData": null,
+      "type": "CREDIT",
+      "creditCardMetadata": null,
+      "merchant": null
+    },
+    {
+      "id": "e172a678-de01-4b58-9578-92db4c21baaf",
+      "description": "TRANSF ENVIADO TED",
+      "descriptionRaw": "Lançamento referente a pagamento de boletos, transferências, DOCs, TEDs e PIX.",
+      "definition": "Fornecedor",
+      "currencyCode": "BRL",
+      "amount": -200,
+      "date": "2022-05-11T03:00:00.000Z",
+      "category": "Pluggy Provedor",
+      "balance": 15253.99,
+      "accountId": "ce86e298-d0fb-4c1a-b718-d4ed252876b0",
+      "providerCode": null,
+      "status": "POSTED",
+      "paymentData": {
+        "payer": {
+          "name": "Pluggy",
+          "branchNumber": "999",
+          "accountNumber": "9876-1",
+          "routingNumber": "002",
+          "documentNumber": {
+            "type": "CNPJ",
+            "value": "08.050.608/0001-32"
+          },
+          "routingNumberISPB": "18236120"
+        },
+        "reason": "Taxa de serviço",
+        "receiver": {
+          "name": "Pluggy",
+          "branchNumber": "999",
+          "accountNumber": "9876-1",
+          "routingNumber": "002",
+          "documentNumber": {
+            "type": "CNPJ",
+            "value": "08.050.608/0001-32"
+          },
+          "routingNumberISPB": "18236120"
+        },
+        "paymentMethod": "TED",
+        "referenceNumber": "123456789"
+      },
+      "type": "DEBIT",
+      "creditCardMetadata": null,
+      "merchant": null
+    },
+    {
+      "id": "572abb4c-b476-439c-a6a1-9220e334f90b",
+      "description": "TRANSF RECEBIDO TED",
+      "descriptionRaw": "Lançamento referente a pagamento de boletos, transferências, DOCs, TEDs e PIX.",
+      "definition": "Clientes a receber",
+      "currencyCode": "BRL",
+      "amount": 1000,
+      "date": "2022-05-10T03:00:00.000Z",
+      "category": null,
+      "balance": 15453.99,
+      "accountId": "ce86e298-d0fb-4c1a-b718-d4ed252876b0",
+      "providerCode": null,
+      "status": "POSTED",
+      "paymentData": {
+        "payer": {
+          "name": "Tiago Rodrigues Santos",
+          "branchNumber": "090",
+          "accountNumber": "1234-5",
+          "routingNumber": "001",
+          "documentNumber": {
+            "type": "CPF",
+            "value": "882.937.076-23"
+          },
+          "routingNumberISPB": "60701190"
+        },
+        "reason": "Taxa de serviço",
+        "receiver": {
+          "name": "Tiago Rodrigues Santos",
+          "branchNumber": "090",
+          "accountNumber": "1234-5",
+          "routingNumber": "001",
+          "documentNumber": {
+            "type": "CPF",
+            "value": "882.937.076-23"
+          },
+          "routingNumberISPB": "60701190"
+        },
+        "paymentMethod": "TED",
+        "referenceNumber": "123456789"
+      },
+      "type": "CREDIT",
+      "creditCardMetadata": null,
+      "merchant": null
+    },
+    {
+      "id": "7fa9baf2-46dd-4f73-bb17-8a1532d9a7d7",
+      "description": "TRANSF ENVIADA PIX",
+      "descriptionRaw": "Lançamento referente a pagamento de boletos, transferências, DOCs, TEDs e PIX.",
+      "definition": "Fornecedor",
+      "currencyCode": "BRL",
+      "amount": -1.02,
+      "date": "2022-04-07T03:00:00.000Z",
+      "category": "Pluggy Provedor",
+      "balance": 14453.99,
+      "accountId": "ce86e298-d0fb-4c1a-b718-d4ed252876b0",
+      "providerCode": null,
+      "status": "POSTED",
+      "paymentData": {
+        "payer": {
+          "name": "Pluggy",
+          "branchNumber": "999",
+          "accountNumber": "9876-1",
+          "routingNumber": "002",
+          "documentNumber": {
+            "type": "CNPJ",
+            "value": "08.050.608/0001-32"
+          },
+          "routingNumberISPB": "18236120"
+        },
+        "reason": "Taxa de serviço",
+        "receiver": {
+          "name": "Pluggy",
+          "branchNumber": "999",
+          "accountNumber": "9876-1",
+          "routingNumber": "002",
+          "documentNumber": {
+            "type": "CNPJ",
+            "value": "08.050.608/0001-32"
+          },
+          "routingNumberISPB": "18236120"
+        },
+        "paymentMethod": "PIX",
+        "referenceNumber": "123456789"
+      },
+      "type": "DEBIT",
+      "creditCardMetadata": null,
+      "merchant": null
+    },
+    {
+      "id": "c9706557-5dad-4bb1-b129-c137dff639ab",
+      "description": "PAGAMENTO CARTAO CREDITO",
+      "descriptionRaw": null,
+      "definition": "Fornecedor",
+      "currencyCode": "BRL",
+      "amount": -544.99,
+      "date": "2022-03-10T03:00:00.000Z",
+      "category": "Cartão de credito a pagar",
+      "balance": 14455.01,
+      "accountId": "ce86e298-d0fb-4c1a-b718-d4ed252876b0",
+      "providerCode": null,
+      "status": "POSTED",
+      "paymentData": null,
+      "type": "DEBIT",
+      "creditCardMetadata": null,
+      "merchant": null
+    },
+    {
+      "id": "c690092e-16da-414f-a7fb-da33907bb67a",
+      "description": "TRANSF RECEBIDO PIX",
+      "descriptionRaw": "Lançamento referente a pagamento de boletos, transferências, DOCs, TEDs e PIX.",
+      "definition": "Clientes a receber",
+      "currencyCode": "BRL",
+      "amount": 15000,
+      "date": "2022-03-02T03:00:00.000Z",
+      "category": null,
+      "balance": 15000,
+      "accountId": "ce86e298-d0fb-4c1a-b718-d4ed252876b0",
+      "providerCode": null,
+      "status": "POSTED",
+      "paymentData": {
+        "payer": {
+          "name": "Tiago Rodrigues Santos",
+          "branchNumber": "090",
+          "accountNumber": "1234-5",
+          "routingNumber": "001",
+          "documentNumber": {
+            "type": "CPF",
+            "value": "882.937.076-23"
+          },
+          "routingNumberISPB": "60701190"
+        },
+        "reason": "Taxa de serviço",
+        "receiver": {
+          "name": "Tiago Rodrigues Santos",
+          "branchNumber": "090",
+          "accountNumber": "1234-5",
+          "routingNumber": "001",
+          "documentNumber": {
+            "type": "CPF",
+            "value": "882.937.076-23"
+          },
+          "routingNumberISPB": "60701190"
+        },
+        "paymentMethod": "PIX",
+        "referenceNumber": "123456789"
+      },
+      "type": "CREDIT",
+      "creditCardMetadata": null,
+      "merchant": null
+    }
+  ]
+}
