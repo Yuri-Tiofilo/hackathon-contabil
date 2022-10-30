@@ -28,6 +28,7 @@ import { useEffect, useState, useRef } from "react";
 import { FilterUser } from "@/components/FilterUser";
 import { colorPrimaryBg } from "@/styles/global";
 import { AiOutlineEye } from "react-icons/ai";
+import { RiAddFill } from "react-icons/ri";
 import { useRouter } from "next/router";
 import { UserDTO } from "@/dtos/users.types";
 import { api } from "@/services/api";
@@ -77,7 +78,7 @@ export default function User({ users }: UserProps) {
             <Th>Usuário</Th>
             {isWideVersion && <Th>Termo aceito?</Th>}
             <Th width="10px" />
-            <Th width="10px" />
+            {isWideVersion && <Th width="10px" />}
           </Tr>
         </Thead>
         <Tbody>
@@ -216,23 +217,39 @@ export default function User({ users }: UserProps) {
   return (
     <Layout>
       <Box flex="1" borderRadius={8} w="100%" bg="gray.800" p={["4", "8"]}>
-        <Flex justifyContent="space-between" flexDir={["column", "row"]}>
+        <Flex justifyContent="space-between" flexDir={["column", "row"]} mb="2">
           <Heading as="h2" size={"md"} fontWeight="bold" mb={["4", "0"]}>
             Listagem de Usuários
           </Heading>
 
-          <FilterUser
-            value={valueSearch}
-            onChange={(text) => setValueSearch(text.target.value)}
-            onKeyPress={(e) => {
-              if (e.key === "Enter") {
-                // fetchUserSearch(valueSearch);
-                console.log("");
-              }
-            }}
-            handleSearch={() => console.log("ve4io ")}
-            title="Buscar"
-          />
+          <Flex flexDir={["column", "row"]}>
+            <Button
+              as="a"
+              colorScheme="blue"
+              mr={["0", "4"]}
+              leftIcon={<Icon as={RiAddFill} fontSize="16" />}
+              _hover={{
+                cursor: "pointer",
+              }}
+              onClick={() => push("/users/create")}
+              order={["1", "0"]}
+            >
+              Adicionar
+            </Button>
+            <FilterUser
+              value={valueSearch}
+              onChange={(text) => setValueSearch(text.target.value)}
+              order={["2", "0"]}
+              onKeyPress={(e) => {
+                if (e.key === "Enter") {
+                  // fetchUserSearch(valueSearch);
+                  console.log("");
+                }
+              }}
+              handleSearch={() => console.log("ve4io ")}
+              title="Buscar"
+            />
+          </Flex>
         </Flex>
         {!isLoading ? (
           <>{renderTable()}</>
