@@ -284,7 +284,7 @@ export const getServerSideProps: GetServerSideProps<UserProps> = async (
           corporate_name: "Yuri Tiofilo escritório LTDA",
           cnpj: "02.628.768/0001-30",
 
-          isAccept: false,
+          isAccept: true,
         },
       ],
     },

@@ -85,12 +85,12 @@ export default function CreateUser() {
           <InputForm
             label="Razão Soial"
             nameForInput="corporate_name"
-            placeholder="Razão Soial"
+            placeholder="Razão Social"
             error={errors.corporate_name && errors.corporate_name?.message}
             {...register("corporate_name")}
           />
 
-          <Text fontWeight="medium">Selcione o tipo de usuário</Text>
+          <Text fontWeight="medium">Selecione o tipo de usuário</Text>
 
           <Select
             placeholder="Tipos"
