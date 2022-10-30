@@ -29,6 +29,8 @@ import { RiArrowLeftFill } from "react-icons/ri";
 import { useRouter } from "next/router";
 import { format } from "date-fns";
 import { Pagination } from "@/components/Pagination";
+import { parseCookies } from "nookies";
+import { GetServerSideProps } from "next";
 
 export default function UserDetails() {
   const { back, push, query } = useRouter();
@@ -42,13 +44,13 @@ export default function UserDetails() {
   async function fetchTransactions() {
     const transactionResponse = apiTransaction.results;
 
-    const transactionData = await axios.get("https://localhost:8000/api/", {
-      headers: {
-        "X-API-KEY": "",
-        accept: "application/json",
-        "content-type": "application/json",
-      },
-    });
+    // const transactionData = await axios.get("https://localhost:8000/api/", {
+    //   headers: {
+    //     "X-API-KEY": "",
+    //     accept: "application/json",
+    //     "content-type": "application/json",
+    //   },
+    // });
 
     setTransactions(apiTransaction.results as TransactionDTO[]);
 
@@ -189,3 +191,19 @@ export default function UserDetails() {
     </Layout>
   );
 }
+
+export const getServerSideProps: GetServerSideProps = async (ctx) => {
+  const cookies = parseCookies(ctx);
+  if (!cookies["hackathon.token"]) {
+    return {
+      redirect: {
+        destination: "/",
+        permanent: false,
+      },
+    };
+  }
+
+  return {
+    props: {},
+  };
+};
